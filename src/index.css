@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── SCROLLBAR ───────────────────────────────────────────────── */
+/* Hide scrollbar globally — scroll position still works (GSAP reads it) */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / Edge */
+}
+html::-webkit-scrollbar {
+  display: none; /* Chrome / Safari */
+}
+
+/* Utility class for inner scroll containers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FLUID TYPOGRAPHY SYSTEM
+   ───────────────────────────────────────────────────────────────────
+   Reference width  : 1440px
+   --theme-spx-ratio: scales linearly with viewport width.
+                      = 1.0 at 1440px  |  = 0.5 at 720px  |  = 1.33 at 1920px
+
+   To resize a token everywhere  → edit its --base-* number below.
+   To change clamp limits        → edit the clamp(min, …, max) values.
+   To swap a font globally       → update --font-primary / --font-secondary
+                                   + the Google Fonts URL in index.html.
+
+   NO media queries needed for font sizes — scaling is fully fluid.
+   ═══════════════════════════════════════════════════════════════════ */
+@layer base {
+  :root {
+    /* ── Fonts ──────────────────────────────────────────────────── */
+    --font-primary: "Poppins", sans-serif;
+    --font-secondary: "Playfair", sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
+
+    /* ── Core scaling ratio ─────────────────────────────────────── */
+    /* 1 unit = 1px at the 1440px design reference                   */
+    --theme-spx-ratio: calc(1vw / 14.4);
+
+    /* ── Font weights ───────────────────────────────────────────── */
+    --fw-hero: 400;
+    --fw-display: 500;
+    --fw-subdisplay: 400;
+    --fw-middisplay: 400;
+    --fw-sectionhead: 500;
+    --fw-body: 400;
+    --fw-power: 300;
+    --fw-vertical: 600;
+
+    /* ── Base sizes — px value at the 1440px reference ───────────
+       Change ONLY these numbers to rescale a token at every width.
+       ─────────────────────────────────────────────────────────── */
+    --base-navbar: 40;
+    --base-hero: 90;
+    --base-display: 70;
+    --base-subdisplay: 50;
+    --base-middisplay: 40;
+    --base-sectionhead: 30;
+    --base-body: 18;
+    --base-power: 20;
+    --base-vertical: 26;
+
+    --orange-color-1: #f17d44;
+    --orange-color-2: #f8c4ab;
+
+    --grey-color-1: #828386;
+    --grey-color-2: #bababa;
+
+    --blue-color-1: #02b3d9;
+    --blue-color-2: #80ccdc;
+
+    /* ── Live sizes: clamp(floor, base × ratio, ceiling) ────────── */
+    --text-navbar: clamp(
+      30px,
+      calc(var(--base-navbar) * var(--theme-spx-ratio)),
+      80px
+    );
+    --text-hero: clamp(
+      32px,
+      calc(var(--base-hero) * var(--theme-spx-ratio)),
+      80px
+    );
+    --text-display: clamp(
+      24px,
+      calc(var(--base-display) * var(--theme-spx-ratio)),
+      80px
+    );
+    --text-subdisplay: clamp(
+      18px,
+      calc(var(--base-subdisplay) * var(--theme-spx-ratio)),
+      64px
+    );
+    --text-middisplay: clamp(
+      20px,
+      calc(var(--base-middisplay) * var(--theme-spx-ratio)),
+      40px
+    );
+    --text-sectionhead: clamp(
+      20px,
+      calc(var(--base-sectionhead) * var(--theme-spx-ratio)),
+      50px
+    );
+    --text-body: clamp(
+      20px,
+      calc(var(--base-body) * var(--theme-spx-ratio)),
+      40px
+    );
+    --text-power: clamp(
+      11px,
+      calc(var(--base-power) * var(--theme-spx-ratio)),
+      30px
+    );
+    --text-vertical: clamp(
+      14px,
+      calc(var(--base-vertical) * var(--theme-spx-ratio)),
+      34px
+    );
+  }
+}

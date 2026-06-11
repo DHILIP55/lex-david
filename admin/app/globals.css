@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── SCROLLBAR ───────────────────────────────────────────────── */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FLUID TYPOGRAPHY SYSTEM — Reference width 1440px
+   ═══════════════════════════════════════════════════════════════════ */
+@layer base {
+  :root {
+    /* ── Fonts ──────────────────────────────────────────────────── */
+    --font-primary: var(--font-poppins), sans-serif;
+    --font-secondary: var(--font-playfair), serif;
+    --font-mono: var(--font-ibm-plex-mono), monospace;
+
+    /* ── Core scaling ratio ─────────────────────────────────────── */
+    --theme-spx-ratio: calc(1vw / 14.4);
+
+    /* ── Font weights ───────────────────────────────────────────── */
+    --fw-hero: 400;
+    --fw-display: 500;
+    --fw-subdisplay: 400;
+    --fw-middisplay: 400;
+    --fw-sectionhead: 500;
+    --fw-body: 400;
+    --fw-power: 300;
+    --fw-vertical: 600;
+
+    /* ── Base sizes (px at 1440px reference) ─────────────────── */
+    --base-navbar: 40;
+    --base-hero: 90;
+    --base-display: 70;
+    --base-subdisplay: 50;
+    --base-middisplay: 40;
+    --base-sectionhead: 30;
+    --base-body: 18;
+    --base-power: 20;
+    --base-vertical: 26;
+
+    /* ── Brand colours ─────────────────────────────────────────── */
+    --orange-color-1: #f17d44;
+    --orange-color-2: #f8c4ab;
+    --grey-color-1: #828386;
+    --grey-color-2: #bababa;
+    --blue-color-1: #02b3d9;
+    --blue-color-2: #80ccdc;
+
+    /* ── Live fluid sizes ───────────────────────────────────────── */
+    --text-navbar: clamp(30px, calc(var(--base-navbar) * var(--theme-spx-ratio)), 80px);
+    --text-hero: clamp(32px, calc(var(--base-hero) * var(--theme-spx-ratio)), 80px);
+    --text-display: clamp(24px, calc(var(--base-display) * var(--theme-spx-ratio)), 80px);
+    --text-subdisplay: clamp(18px, calc(var(--base-subdisplay) * var(--theme-spx-ratio)), 64px);
+    --text-middisplay: clamp(20px, calc(var(--base-middisplay) * var(--theme-spx-ratio)), 40px);
+    --text-sectionhead: clamp(20px, calc(var(--base-sectionhead) * var(--theme-spx-ratio)), 50px);
+    --text-body: clamp(20px, calc(var(--base-body) * var(--theme-spx-ratio)), 40px);
+    --text-power: clamp(11px, calc(var(--base-power) * var(--theme-spx-ratio)), 30px);
+    --text-vertical: clamp(14px, calc(var(--base-vertical) * var(--theme-spx-ratio)), 34px);
+  }
+}
